@@ -12,10 +12,10 @@ class DatabaseConnection
     function __construct()
     {
         $this->db_host = 'localhost';
-        $this->db_username = 'test';
-        $this->db_password =  '1234';
-        $this->db_databasename = 'testing_oop';
-        $this->db_port = 8888;
+        $this->db_username = '';
+        $this->db_password =  '';
+        $this->db_databasename = '_oop';
+        $this->db_port = ;
         $this->db_socket = '/Applications/MAMP/tmp/mysql/mysql.sock';
         $this->db_connect();
     }
