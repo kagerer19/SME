@@ -1,4 +1,9 @@
 # Customer Management System
+![Image Alt Text](Home.png)
+![Image Alt Text](clients.png)
+![Image Alt Text](edit.png)
+![Image Alt Text](register.png)
+![Image Alt Text](users.png)
 
 This is a small PHP project developed as a final exercise for a bootcamp. It aims to create a customer management system for a Small and Medium-sized Enterprise (SME) to manage their customer data efficiently.
 
