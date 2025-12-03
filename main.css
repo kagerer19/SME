@@ -1,0 +1,54 @@
+/* Background */
+.dash-bg {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px),
+    radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.table-container {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.table-container.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable pointer events on hidden elements */
+}
+
+.active {
+  opacity: 0.8; /* Adjust the opacity value as needed */
+}
+
+.page-transition {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-spin {
+  animation: spin 2s linear infinite; /* Adjust the animation duration to match the PHP delay */
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 765px) {
+  .hidden-lg {
+    display: none;
+  }
+}
