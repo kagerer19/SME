@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Include the DatabaseConnection class
 require_once 'CRUD/DatabaseConnection.php';
 ?>

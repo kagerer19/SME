@@ -1,7 +1,6 @@
 <?php
 // loginForm.php
 session_start();
-include 'toast.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once('login-validation.php');
