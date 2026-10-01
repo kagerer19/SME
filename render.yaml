@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: sme-customer-manager
+    runtime: docker
+    plan: free

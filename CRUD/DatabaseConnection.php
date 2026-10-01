@@ -2,31 +2,21 @@
 
 class DatabaseConnection
 {
-    protected $db_host;
-    protected $db_username;
-    protected $db_password;
-    protected $db_databasename;
-    protected $db_port;
-    protected $db_socket;
+    protected $db_path;
     protected $pdo;
 
     function __construct()
     {
-        $this->db_host = 'localhost';
-        $this->db_username = 'test';
-        $this->db_password = '';
-        $this->db_databasename = 'testing_oop';
-        $this->db_port = 8888;
-        $this->db_socket = '/Applications/MAMP/tmp/mysql/mysql.sock';
+        $this->db_path = getenv('DB_PATH') ?: '/var/www/data/app.sqlite';
         $this->db_connect();
     }
 
     private function db_connect()
     {
         try {
-            $dsn = "mysql:host={$this->db_host};port={$this->db_port};dbname={$this->db_databasename};unix_socket={$this->db_socket}";
-            $this->pdo = new PDO($dsn, $this->db_username, $this->db_password);
+            $this->pdo = new PDO('sqlite:' . $this->db_path);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo->exec('PRAGMA foreign_keys = ON');
         } catch (PDOException $e) {
             throw new Exception('Connection Failed: ' . $e->getMessage());
         }
@@ -64,7 +54,7 @@ class DatabaseConnection
 
     function updateClientData($companyName, $contactPerson, $phone, $address, $companyId)
     {
-        $query = "UPDATE clients SET company_name = ?, contact_person = ?, phone = ?, address = ? WHERE company_id = ?";
+        $query = "UPDATE clients SET company_name = ?, contact_person = ?, phone = ?, address = ?, edited_at = CURRENT_TIMESTAMP WHERE company_id = ?";
         $params = [$companyName, $contactPerson, $phone, $address, $companyId];
 
         $this->executeStatement($query, $params);
